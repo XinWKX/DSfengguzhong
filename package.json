@@ -1,0 +1,45 @@
+{
+  "name": "ds-fenggu",
+  "version": "1.1.0",
+  "description": "DS峰谷钟 — 实时显示 DeepSeek API 当前处于高峰（梁文峰）还是空闲（梁文谷）时段，含网页、节假日日历与 /v1/fenggu 接口",
+  "author": "创想工作室",
+  "repository": { "type": "git", "url": "https://github.com/XinWKX/ds-fenggu.git" },
+  "bugs": { "url": "https://github.com/XinWKX/ds-fenggu/issues" },
+  "homepage": "https://github.com/XinWKX/ds-fenggu#readme",
+  "license": "GPL-3.0-or-later",
+  "files": [
+    "server.js",
+    "peak-valley-core.js",
+    "peak-valley-feeds.js",
+    "deepseek-peak-valley.html",
+    "ARCHITECTURE.md",
+    "deploy/",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "keywords": [
+    "deepseek",
+    "peak",
+    "off-peak",
+    "pricing",
+    "dashboard",
+    "countdown",
+    "holiday",
+    "china"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/test-all.mjs",
+    "test:unit": "node test/test-peak-valley.mjs && node test/test-oracle.mjs && node test/test-feeds.mjs && node test/test-ui.mjs && node test/check-html.cjs && node test/check-icons.mjs && node test/check-quality.cjs && node test/check-cwd.mjs",
+    "build": "node build-dist.mjs",
+    "gen:holidays": "node tools/gen-holidays.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "private": false
+}

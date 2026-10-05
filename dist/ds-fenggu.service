@@ -1,0 +1,47 @@
+# DS峰谷钟 systemd 服务单元（参考模板）
+#
+# 实际安装建议直接用 install.sh（它会自动探测 node 路径、生成这份文件、
+# 并在失败时打印诊断与回滚命令）。
+#
+# 手工使用时：把下面内容存为 /etc/systemd/system/ds-fenggu.service，
+# 按需修改 WorkingDirectory 与 ExecStart 里的 node 路径（用 `command -v node` 查），
+# 然后执行：
+#   systemctl daemon-reload && systemctl enable --now ds-fenggu
+
+[Unit]
+Description=DS峰谷钟 (DeepSeek peak/valley clock API)
+Documentation=https://github.com/XinWKX/ds-fenggu
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# 以专用非 root 用户运行（推荐）：先创建系统用户并把目录交给它，再取消下面两行注释
+#   useradd --system --no-create-home --shell /usr/sbin/nologin dsfenggu
+#   chown -R dsfenggu /opt/ds-fenggu
+# User=dsfenggu
+# Group=dsfenggu
+
+WorkingDirectory=/opt/ds-fenggu
+ExecStart=/usr/bin/node server.js
+Environment=PORT=8787
+# 0.0.0.0：允许同机 Docker 容器（1Panel 的 OpenResty）通过网关或内网 IP 访问。
+# 若确认 OpenResty 使用 host 网络模式，可收紧为 127.0.0.1 更安全。
+Environment=HOST=0.0.0.0
+
+# 崩溃自动拉起：未捕获异常时进程会「记录后优雅退出」，由这里负责重启
+Restart=always
+RestartSec=3
+
+# 加固：本服务只需读自己的目录并监听端口，不需要写系统任何位置
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target

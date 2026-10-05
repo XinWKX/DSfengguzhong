@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 200" width="760" height="200" role="img" aria-label="DS峰谷钟">
+  <rect width="760" height="200" fill="#06060A"/>
+  <g fill="none" stroke="#64FFDA" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(48,74) scale(2.6)">
+    <path d="M1.5 13.4 6.4 5.2l3.3 4.6 3.8-6.4 3.7 5.9 2.8-2.9 3.5 7"/>
+  </g>
+  <text x="140" y="100" fill="#E8E8ED" font-family="system-ui,-apple-system,'Segoe UI','Microsoft YaHei',sans-serif" font-size="58" font-weight="700" letter-spacing="3">DS峰谷钟</text>
+  <text x="143" y="136" fill="#7B8494" font-family="system-ui,-apple-system,'Segoe UI','Microsoft YaHei',sans-serif" font-size="17" letter-spacing="0.5">DeepSeek 高峰 / 空闲时段实时钟 · 接口 /v1/fenggu · 创想工作室</text>
+</svg>
