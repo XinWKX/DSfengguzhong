@@ -42,7 +42,7 @@ cd ds-fenggu
 npm start                 # 默认 0.0.0.0:8787
 ```
 
-打开 <http://127.0.0.1:8787> or <https://dsfgz.xinwkx.top>即可。
+打开 <https://dsfgz.xinwkx.top> 即可。
 
 只想看网页、不跑服务：直接双击 `deepseek-peak-valley.html`（它需要与两个 `.js` 放在同一目录）。
 
